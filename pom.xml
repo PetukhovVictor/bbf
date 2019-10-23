@@ -93,7 +93,6 @@
 
     <modules>
         <module>backend-bugfinder</module>
-        <module>bcomparatorgui</module>
         <module>reduKtor</module>
         <module>kootstrap</module>
     </modules>
