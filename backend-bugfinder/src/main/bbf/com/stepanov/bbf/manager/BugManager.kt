@@ -35,6 +35,8 @@ object BugManager {
         if (ReportProperties.getPropAsBoolean("FILE_REPORTER") == true) {
             FileReporter.dump(listOf(bug))
         }
+
+
     }
 
     private fun parseTypeOfBugByMsg(msg: String): BugType =
