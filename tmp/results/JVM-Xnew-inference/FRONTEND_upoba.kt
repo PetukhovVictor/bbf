@@ -1,0 +1,6 @@
+fun 
+()  {
+when (false) {
+else -> []!!
+}
+}
