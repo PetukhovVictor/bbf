@@ -26,9 +26,8 @@ class BugFinder(private val path: String) : Runnable {
         findBugsInFile()
     }
 
-    fun findBugsInFile() {
+    fun findBugsInFile(): String? {
         try {
-            println("Let's go")
             ++counter
             log.debug("Name = $path")
             val psiCreator = PSICreator("")
@@ -36,7 +35,7 @@ class BugFinder(private val path: String) : Runnable {
                     try {
                         psiCreator.getPSIForFile(path)
                     } catch (e: Throwable) {
-                        return
+                        return null
                     }
 
             //Init compilers
@@ -55,7 +54,7 @@ class BugFinder(private val path: String) : Runnable {
                             .toList()
             if (ignoreBackendsFromFile.any { filterBackends.contains(it) }) {
                 log.debug("Skipped because one of the backends is ignoring")
-                return
+                return null
             }
 
             //Init lateinit vars
@@ -66,7 +65,7 @@ class BugFinder(private val path: String) : Runnable {
             //Check for compiling
             if (!compilers.checkCompilingForAllBackends(psiFile)) {
                 log.debug("Could not compile $path")
-                return
+                return null
             }
             log.debug("Start to mutate")
 
@@ -104,12 +103,11 @@ class BugFinder(private val path: String) : Runnable {
                         else
                             traced.text
                 BugManager.saveBug(res.joinToString(separator = ","), "", reduced, BugType.DIFFBEHAVIOR)
+                return reduced
             }
-            return
+            return null
         } catch (e: Error) {
-            println("ERROR: $e")
-            log.debug("ERROR: $e")
-            return
+            return null
             //System.exit(0)
         }
     }
