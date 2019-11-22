@@ -51,7 +51,6 @@
 
     <build>
         <sourceDirectory>src/main/bbfExecutor</sourceDirectory>
-        <testSourceDirectory>src/test/bbfExecutor</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

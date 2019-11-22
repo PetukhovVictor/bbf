@@ -1,15 +1,23 @@
+// !JVM_DEFAULT_MODE: compatibility
+// TARGET_BACKEND: JVM
+// JVM_TARGET: 1.8
+// WITH_RUNTIME
+// FULL_JDK
 
-class C() {
-    fun Any.toMyPrefixedString(prefix: String = "", suffix: String="") : String = prefix + " " + suffix
-
-    fun testReceiver() : String {
-        val res : String = "mama".toMyPrefixedString("111", "222")
-        return res
+interface Test {
+    @JvmDefault
+    fun test(s: String ="OK"): String {
+        return s
     }
+}
+
+class TestClass : Test {
 
 }
 
-fun box() : String {
-    if(C().testReceiver() != "111 222") return "fail"
-    return "OK"
+fun box(): String {
+    val defaultImpls = java.lang.Class.forName(Test::class.java.canonicalName + "\$DefaultImpls")
+
+    val declaredMethod = defaultImpls.getDeclaredMethod("test\$default", Test::class.java, String::class.java, Int::class.java, Any::class.java)
+    return declaredMethod.invoke(null, TestClass(), null, 1, null) as String
 }

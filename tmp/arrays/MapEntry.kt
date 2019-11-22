@@ -1,17 +1,30 @@
 // TARGET_BACKEND: JVM
 
-class MyMapEntry<K, V>: Map.Entry<K, V> {
-    override fun hashCode(): Int = 0
-    override fun equals(other: Any?): Boolean = false
-    override val key: K get() = throw UnsupportedOperationException()
-    override val value: V get() = throw UnsupportedOperationException()
+// FILE: Test.java
+
+import java.lang.*;
+import java.util.*;
+
+public class Test {
+    public static class MapEntryImpl implements Map.Entry<String, String> {
+        public String getKey() { return null; }
+        public String getValue() { return null; }
+        public String setValue(String s) { return null; }
+    }
 }
 
+// FILE: main.kt
+
+//class MyIterable : Test.IterableImpl()
+//class MyIterator : Test.IteratorImpl()
+class MyMapEntry : Test.MapEntryImpl()
+
 fun box(): String {
-    try {
-        (MyMapEntry<String, Int>() as java.util.Map.Entry<String, Int>).setValue(1)
-        throw AssertionError()
-    } catch (e: UnsupportedOperationException) {
-        return "OK"
-    }
+
+    val b = MyMapEntry()
+    b.key
+    b.value
+    b.setValue(null)
+
+    return "OK"
 }
