@@ -58,7 +58,9 @@ abstract class CommonCompiler {
             val writer = BufferedWriter(FileWriter(CompilerArgs.pathToTmpFile))
             writer.write(text)
             writer.close()
-            checkCompiling(CompilerArgs.pathToTmpFile)
+            val p = checkCompiling(CompilerArgs.pathToTmpFile)
+            p
+
         }
     }
 

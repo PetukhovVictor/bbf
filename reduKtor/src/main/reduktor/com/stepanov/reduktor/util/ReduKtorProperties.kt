@@ -6,7 +6,7 @@ import java.util.*
 
 object ReduKtorProperties {
 
-    private val file: File = File("bbf.conf")
+    private val file: File = File("../bbf.conf")
 
     fun getPropValue(name: String): String? {
         val props = Properties()

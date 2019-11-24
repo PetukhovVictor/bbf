@@ -22,7 +22,7 @@ class JVMCompiler(private val arguments: String = "") : CommonCompiler() {
         get() = "JVM $arguments"
 
     override val pathToCompiled: String
-        get() = "tmp/tmp.jar"
+        get() = "../tmp/tmp.jar"
 
 
     override fun checkCompiling(pathToFile: String): Boolean {
@@ -52,7 +52,7 @@ class JVMCompiler(private val arguments: String = "") : CommonCompiler() {
 
     override fun tryToCompile(pathToFile: String): KotlincInvokeStatus {
         val threadPool = Executors.newCachedThreadPool()
-        val trashDir = "tmp/trash/"
+        val trashDir = "../tmp/trash/"
         //Clean dir
         if (File(trashDir).exists())
             FileUtils.cleanDirectory(File(trashDir))

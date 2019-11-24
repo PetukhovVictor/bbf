@@ -6,7 +6,7 @@ import java.util.*
 
 object ReportProperties {
 
-    private val file = File("bbf.conf")
+    private val file = File("../bbf.conf")
 
     fun getPropValue(name: String): String? {
         val props = Properties()

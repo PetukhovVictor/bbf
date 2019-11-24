@@ -135,7 +135,7 @@ class PSICreator(var projectDir: String) {
 
     fun getPSIForText(text: String): KtFile {
         //Save to tmp
-        val path = "tmp/tmp.kt"
+        val path = "../tmp/tmp.kt"
         File(path).writeText(text)
         return getPSIForFile(path)
     }

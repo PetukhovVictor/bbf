@@ -1,12 +1,10 @@
 package com.stepanov.bbf.executor
 
-import com.stepanov.reduktor.executor.CompilerArgs
 import java.io.File
 import java.util.*
 
 object CompilerArgs {
-
-    private val file: File = File("bbf.conf")
+    private val file: File = File("../bbf.conf")
 
     fun getPropValue(name: String): String? {
         val props = Properties()
@@ -30,7 +28,7 @@ object CompilerArgs {
     //PATHS TO COMPILERS
     val pathToKotlinc = getPropValueWithoutQuotes("KOTLINC")
     val pathToKotlincJS = getPropValueWithoutQuotes("KOTLINCJS")
-    val pathToJsKotlinLib = "${System.getProperty("user.dir")}/tmp/lib/"
+    val pathToJsKotlinLib = "${System.getProperty("user.dir")}/../tmp/lib/"
     val pathToTmpFile = getPropValueWithoutQuotes("TMPFILE")
 
     //RESULT

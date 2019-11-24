@@ -5,7 +5,7 @@ import java.util.*
 
 object BBFProperties {
 
-    private val file: File = File("bbf.conf")
+    private val file: File = File("../bbf.conf")
 
     fun getPropValue(name: String): String? {
         val props = Properties()

@@ -19,7 +19,7 @@ class JVMBackend(private val arguments: String) : CommonBackend {
 
     override fun tryToCompile(path: String): KotlincInvokeStatus {
         val threadPool = Executors.newCachedThreadPool()
-        val trashDir = "tmp/trash/"
+        val trashDir = "../tmp/trash/"
         //Clean dir
         if (File(trashDir).exists())
             FileUtils.cleanDirectory(File(trashDir))

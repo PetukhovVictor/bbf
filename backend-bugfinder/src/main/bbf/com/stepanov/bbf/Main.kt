@@ -20,7 +20,7 @@ import kotlin.system.exitProcess
 
 fun run(args: Array<String>): String? {
     //Init log4j
-    PropertyConfigurator.configure("backend-bugfinder/src/main/resources/log4j.properties")
+    PropertyConfigurator.configure("../backend-bugfinder/src/main/resources/log4j.properties")
 
     if (!CompilerArgs.getPropAsBoolean("LOG")) {
         Logger.getRootLogger().level = Level.OFF
@@ -63,5 +63,5 @@ fun run(args: Array<String>): String? {
     require(File(files).isDirectory) { "Specify directory to take files for mutation" }
     val file = File(files).listFiles()?.random() ?: return null
     println("STARTING MUTATION ON ${file.path}\n")
-    return BugFinder(file.absolutePath.replace("backend-bugfinder/../", "")).findBugsInFile()
+    return BugFinder(file.absolutePath).findBugsInFile()
 }

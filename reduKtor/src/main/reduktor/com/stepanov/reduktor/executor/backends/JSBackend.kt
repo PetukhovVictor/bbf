@@ -13,7 +13,7 @@ import java.util.concurrent.TimeoutException
 
 class JSBackend(private val arguments: String) : CommonBackend {
     override fun tryToCompile(path: String): KotlincInvokeStatus {
-        val tmpPath = "/tmp/tmp.js"
+        val tmpPath = "../tmp/tmp.js"
         File(tmpPath).delete()
         val args =
             if (arguments.isEmpty())

@@ -21,7 +21,7 @@ class JSCompiler(private val arguments: String = "") : CommonCompiler() {
         get() = "JS $arguments"
 
     override val pathToCompiled: String
-        get() = "tmp/tmp.js"
+        get() = "../tmp/tmp.js"
 
     override fun getErrorMessage(pathToFile: String): String = tryToCompile(pathToFile).combinedOutput
 
@@ -34,7 +34,7 @@ class JSCompiler(private val arguments: String = "") : CommonCompiler() {
             tryToCompile(pathToFile).hasException
 
     override fun tryToCompile(pathToFile: String): KotlincInvokeStatus {
-        val tmpPath = "tmp/tmp.js"
+        val tmpPath = "../tmp/tmp.js"
         File(tmpPath).delete()
         MsgCollector.clear()
         val args =

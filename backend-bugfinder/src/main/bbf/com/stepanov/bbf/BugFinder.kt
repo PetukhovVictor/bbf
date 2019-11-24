@@ -18,6 +18,7 @@ import com.stepanov.reduktor.parser.PSICreator
 import org.apache.log4j.Logger
 import org.jetbrains.kotlin.psi.KtPsiFactory
 import java.io.File
+import java.nio.file.Files
 import java.util.*
 
 class BugFinder(private val path: String) : Runnable {
